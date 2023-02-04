@@ -6,8 +6,4 @@ pylint>=2.5.0
 pytest>=6.0.0
 scipy>=1.10.0
 torch>=1.13.0
-torch-cluster
 torch-geometric
-torch-scatter
-torch-sparse
-torch-spline-conv

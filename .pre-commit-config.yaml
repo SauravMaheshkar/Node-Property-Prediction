@@ -18,8 +18,3 @@ repos:
     rev: v0.991
     hooks:
       - id: mypy
-  - repo: https://github.com/pycqa/isort
-    rev: 5.11.4
-    hooks:
-      - id: isort
-        args: ["--profile", "black"]
