@@ -37,9 +37,8 @@ class GraphMLPBlock(nn.Module):
             kernel_init=nn.initializers.glorot_uniform(),
             bias_init=nn.initializers.normal(stddev=self.eps),
         )(inputs)
-        normalized_activations = nn.LayerNorm(epsilon=self.eps)(
-            intermediate_representations
-        )
+        activations = nn.gelu(intermediate_representations)
+        normalized_activations = nn.LayerNorm(epsilon=self.eps)(activations)
         dropout_representations = nn.Dropout(
             rate=self.dropout_prob, deterministic=not training
         )(normalized_activations)
