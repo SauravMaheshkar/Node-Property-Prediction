@@ -154,14 +154,13 @@ class GraphMLP(torch.nn.Module):
 
         # Create similarity and mask matrices
         self.similarity_matrix = graph_features @ graph_features.T
-        mask = torch.eye(self.similarity_matrix.shape[0])
+        mask_matrix = torch.eye(self.similarity_matrix.shape[0])
 
-        # L-2 Normalize the similarity matrix
         x_sum = torch.sum(graph_features**2, 1).reshape(-1, 1)
         x_sum = torch.sqrt(x_sum).reshape(-1, 1)
         x_sum = x_sum @ x_sum.T
         self.similarity_matrix = self.similarity_matrix * (x_sum ** (-1))
 
         # Mask the similarity matrix
-        self.similarity_matrix = (1 - mask) * self.similarity_matrix
+        self.similarity_matrix = (1 - mask_matrix) * self.similarity_matrix
         return self.similarity_matrix
