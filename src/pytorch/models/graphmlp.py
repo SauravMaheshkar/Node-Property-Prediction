@@ -134,8 +134,8 @@ class GraphMLP(torch.nn.Module):
             similarity_matrix = self.get_similarity_matrix(encoded_features)
 
         # Compute class logits
-        class_feature = self.classifier(feature_cls)
-        class_logits = F.log_softmax(class_feature, dim=1)
+        class_features = self.classifier(feature_cls)
+        class_logits = F.log_softmax(class_features, dim=1)
 
         # Return class logits and similarity matrix
         return class_logits, similarity_matrix
