@@ -8,8 +8,6 @@
 .mypy_cache/
 
 data/
-models/
-notebooks/
 
 **/.DS_Store
 README.md

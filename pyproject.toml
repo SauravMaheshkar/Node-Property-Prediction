@@ -14,12 +14,14 @@ disable = [
     "too-many-branches",
     "redefined-builtin",
     "dangerous-default-value",
+    "attribute-defined-outside-init",
 ]
 
 [tool.pylint.format]
 max-line-length = 88
 
 [[tool.mypy.overrides]]
+module = ["tensorflow"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
@@ -27,4 +29,9 @@ testpaths = ["tests"]
 filterwarnings = [
     "ignore::DeprecationWarning",
 	"ignore::UserWarning"
+]
+markers = [
+    "tensorflow: mark test as tensorflow related",
+    "pytorch: mark test as pytorch related",
+    "jax: mark test as jax/flax related",
 ]
